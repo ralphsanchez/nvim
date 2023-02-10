@@ -7,8 +7,6 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.wildmode = "longest:full"
 
-vim.cmd.colorscheme("habamax") -- my default built-in color
-
 vim.api.nvim_create_autocmd(
   {"FileType"}, 
   {
@@ -24,10 +22,22 @@ local paq_on, paq = pcall(require, "paq")
 if paq_on then
   -- git clone https://github.com/savq/paq-nvim.git "$env:LOCALAPPDATA\nvim-data\site\pack\paqs\start\paq-nvim"
   -- git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
-  paq({
+  paq {
     "savq/paq-nvim";
-    "archseer/colibri.vim"; -- Color similar to helix text editor
-  })
+
+    -- Colors
+    {"archseer/colibri.vim"}; -- Color similar to helix text editor
+    {"NLKNguyen/papercolor-theme", run = "vim.cmd('set bg=light')"};
+    {"catppuccin/nvim", as = "catppuccin"};
+    {"Mofiqul/dracula.nvim", as = "dracula.nvim"};
+    {"cocopon/iceberg.vim"};
+    {"wadackel/vim-dogrun"};
+    {"ray-x/aurora"};
+    {"preservim/vim-colors-pencil"};
+    {"arcticicestudio/nord-vim"};
+    {"embark-theme/vim", as = "embark-theme"};
+    {"challenger-deep-theme/vim", as = "challenger-deep-theme"};
+  }
 end
 
 if vim.g.goneovim then
