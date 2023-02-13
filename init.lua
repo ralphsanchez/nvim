@@ -1,20 +1,20 @@
 -- Neovim https://neovim.io/
 
 -- https://neovim.io/doc/user/options.html#option-summary
-vim.o.browsedir = "buffer"
-vim.o.cursorline = true
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.wildmode = "longest:full"
+vim.opt.browsedir = "buffer"
+vim.opt.cursorline = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.wildmode = "longest:full"
 
 vim.api.nvim_create_autocmd(
   {"FileType"}, 
   {
     pattern = "vim,lua",
     callback = function(ev)
-      vim.o.expandtab = true
-      vim.o.shiftwidth = 2
-      vim.o.tabstop = 2
+      vim.opt.expandtab = true
+      vim.opt.shiftwidth = 2
+      vim.opt.tabstop = 2
     end
   })
 
@@ -42,12 +42,14 @@ end
 
 if vim.g.goneovim then
   -- https://github.com/akiyosi/goneovim
+  -- scoop install goneovim
   -- :h goneovim.txt
   vim.cmd("command! GonvimConfig :split ~/.goneovim/settings.toml")
 end
 
 if vim.g.neovide then
-  -- https://neovide.dev/configuration.html
+  -- https://neovide.dev/
+  -- scoop install neovide
 	vim.g.neovide_remember_window_size = true
 	vim.opt.guifont = {"Cascadia Mono:h10"}
 
