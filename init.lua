@@ -1,4 +1,7 @@
 -- Neovim https://neovim.io/
+-- Local config goes in:
+--   Windows: "~/AppData/Local/nvim/plugin/local.vim"
+--   Unix: "~/.config/nvim/plugin/local.vim"
 
 -- https://neovim.io/doc/user/options.html#option-summary
 vim.opt.browsedir = "buffer"
@@ -25,7 +28,7 @@ if paq_on then
   paq {
     "savq/paq-nvim";
 
-    -- Colors
+    -- Colorshemes
     {"archseer/colibri.vim"}; -- Color similar to helix text editor
     {"NLKNguyen/papercolor-theme", run = "vim.cmd('set bg=light')"};
     {"catppuccin/nvim", as = "catppuccin"};
@@ -51,9 +54,4 @@ if vim.g.neovide then
   -- https://neovide.dev/
   -- scoop install neovide
 	vim.g.neovide_remember_window_size = true
-	vim.opt.guifont = {"Cascadia Mono:h10"}
-
-  if not pcall(vim.cmd.colorscheme, "colibri") then
-    vim.cmd.colorscheme("habamax")
-  end
 end
