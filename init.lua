@@ -21,10 +21,9 @@ vim.api.nvim_create_autocmd(
     end
   })
 
+-- https://github.com/savq/paq-nvim
 local paq_on, paq = pcall(require, "paq")
 if paq_on then
-  -- git clone https://github.com/savq/paq-nvim.git "$env:LOCALAPPDATA\nvim-data\site\pack\paqs\start\paq-nvim"
-  -- git clone --depth=1 https://github.com/savq/paq-nvim.git "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/pack/paqs/start/paq-nvim
   paq {
     "savq/paq-nvim";
 
