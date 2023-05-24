@@ -49,41 +49,39 @@ vim.api.nvim_create_autocmd(
     end
   })
 
-local packs = {}
-
--- plugins
-table.insert(packs, "BurntSushi/ripgrep")
-table.insert(packs, "LinArcX/telescope-command-palette.nvim")
-table.insert(packs, "bakpakin/janet.vim")
-table.insert(packs, "tpope/vim-unimpaired")
-table.insert(packs, { "folke/which-key.nvim", run = function() require("which-key").setup({ }) end })
-
--- themes
-table.insert(packs, "NLKNguyen/papercolor-theme")
-table.insert(packs, "arcticicestudio/nord-vim")
-table.insert(packs, "cocopon/iceberg.vim")
-table.insert(packs, "preservim/vim-colors-pencil")
-table.insert(packs, "ray-x/aurora")
-table.insert(packs, "rebelot/kanagawa.nvim")
-table.insert(packs, "sts10/vim-pink-moon")
-table.insert(packs, "wadackel/vim-dogrun")
-table.insert(packs, { "Mofiqul/dracula.nvim", as = "dracula" })
-table.insert(packs, { "catppuccin/nvim", as = "catppuccin" })
-table.insert(packs, { "challenger-deep-theme/vim", as = "challenger-deep-theme" })
-table.insert(packs, { "embark-theme/vim", as = "embark-theme" })
-table.insert(packs, "archseer/colibri.vim")
-
 -- paq https://github.com/savq/paq-nvim
-local function init_paq()
-  local path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
-  local installed = vim.fn.empty(vim.fn.glob(path)) == 0
-  if not installed then
-    return vim.fn.system { "git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", path }
-  end
-  local paq_on, paq = pcall(require, "paq")
-  table.insert(packs, 1, "savq/paq-nvim")
-  paq { packs }
+local paq_path = vim.fn.stdpath("data") .. "/site/pack/paqs/start/paq-nvim"
+local paq_installed = vim.fn.empty(vim.fn.glob(path)) == 0
+if not paq_installed then
+  return vim.fn.system { "git", "clone", "--depth=1", "https://github.com/savq/paq-nvim.git", path }
 end
+if paq_installed then
+  require "paq" {
+    "savq/paq-nvim",
+
+    -- plugins
+    "BurntSushi/ripgrep",
+    "LinArcX/telescope-command-palette.nvim",
+    "bakpakin/janet.vim",
+    "tpope/vim-unimpaired",
+    { "folke/which-key.nvim", run = function() require("which-key").setup({ }) end },
+
+    -- themes
+    "NLKNguyen/papercolor-theme",
+    "arcticicestudio/nord-vim",
+    "cocopon/iceberg.vim",
+    "preservim/vim-colors-pencil",
+    "ray-x/aurora",
+    "rebelot/kanagawa.nvim",
+    "sts10/vim-pink-moon",
+    "wadackel/vim-dogrun",
+    { "Mofiqul/dracula.nvim", as = "dracula" },
+    { "catppuccin/nvim", as = "catppuccin" },
+    { "challenger-deep-theme/vim", as = "challenger-deep-theme" },
+    { "embark-theme/vim", as = "embark-theme" },
+    "archseer/colibri.vim",
+  }
+end 
 
 if vim.g.goneovim then
   -- https://github.com/akiyosi/goneovim
