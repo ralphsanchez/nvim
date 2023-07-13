@@ -1,7 +1,9 @@
 -- Neovim https://neovim.io/
 -- Local config goes in:
---   Windows: "~/AppData/Local/nvim/plugin/local.vim"
---   Unix: "~/.config/nvim/plugin/local.vim"
+-- Windows: "~/AppData/Local/nvim/plugin/local.vim"
+-- Unix: "~/.config/nvim/plugin/local.vim"
+
+vim.env.MYVIMRC = vim.fn.stdpath('config') .. '/init.lua'
 
 -- https://neovim.io/doc/user/options.html#option-summary
 vim.opt.browsedir = 'buffer'
@@ -21,20 +23,11 @@ vim.keymap.set('', '<C-F11>',
     vim.cmd('echo g:colors_name')
   end)
 
-vim.api.nvim_create_autocmd({'ColorScheme'}, {
-  pattern = {'*'},
-  command = 'let COLOR = g:colors_name'
-})
-
-vim.o.guifont = table.concat({ 'Consolas:h10', 'Courier_New:h10' }, ',')
-
-vim.api.nvim_create_autocmd(
-  {'VimEnter'}, {
-    pattern = {'*'},
-    callback = function() 
-      vim.cmd('colorscheme ' .. vim.g.COLOR)
-    end
-  })
+-- Fonts and Colors
+if vim.fn.has('gui_running') then
+  vim.cmd([[colorscheme catppuccin | set guifont=Consolas:h12]])
+else
+end
 
 vim.api.nvim_create_autocmd(
   {'FileType'}, {
@@ -105,10 +98,6 @@ if vim.g.fvim_loaded then
 	]])
 end
 
--- https://github.com/RMichelsen/Nvy
-if vim.g.nvy then
-end
-
 local packs = {
   -- plugins
   'BurntSushi/ripgrep',
@@ -128,15 +117,24 @@ local packs = {
   },
   { 'folke/which-key.nvim', run = function() require('which-key').setup({ }) end },
 
-  -- themes
+  -- colorschemes
   'NLKNguyen/papercolor-theme',
+  'ajgrf/parchment',
   'archseer/colibri.vim',
   'arcticicestudio/nord-vim',
   'cocopon/iceberg.vim',
+  'folke/tokyonight.nvim',
+  'jaredgorski/fogbell.vim',
+  'morhetz/gruvbox',
+  'nelstrom/vim-mac-classic-theme',
+  'ntbbloodbath/sweetie.nvim',
+  'olivertaylor/vacme',
   'preservim/vim-colors-pencil',
   'ray-x/aurora',
   'rebelot/kanagawa.nvim',
   'sainnhe/sonokai',
+  'sainnhe/everforest',
+  'savq/melange-nvim',
   'sts10/vim-pink-moon',
   'wadackel/vim-dogrun',
   { 'Mofiqul/dracula.nvim', as = 'dracula' },
@@ -161,3 +159,4 @@ if false and vim.loop.fs_stat(lazypath) then
   vim.opt.rtp:prepend(lazypath)
   require("lazy").setup(packs, opts)
 end
+
