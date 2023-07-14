@@ -117,7 +117,7 @@ local packs = {
   },
   { 'folke/which-key.nvim', run = function() require('which-key').setup({ }) end },
 
-  -- colorschemes
+  -- colorschemes https://vimcolorschemes.com/
   'NLKNguyen/papercolor-theme',
   'ajgrf/parchment',
   'archseer/colibri.vim',
@@ -125,11 +125,16 @@ local packs = {
   'cocopon/iceberg.vim',
   'folke/tokyonight.nvim',
   'jaredgorski/fogbell.vim',
+  'josebalius/vim-light-chromeclipse',
+  'lmburns/kimbox',
   'morhetz/gruvbox',
   'nelstrom/vim-mac-classic-theme',
   'ntbbloodbath/sweetie.nvim',
   'olivertaylor/vacme',
+  'ok-ryoko/blue-screen',
+  'oxfist/night-owl.nvim',
   'preservim/vim-colors-pencil',
+  'progrimorio/nvim-nyctophilia',
   'ray-x/aurora',
   'rebelot/kanagawa.nvim',
   'sainnhe/sonokai',
