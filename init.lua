@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- Neovim https://neovim.io/
 -- Local config goes in:
 -- Windows: "~/AppData/Local/nvim/plugin/local.vim"
