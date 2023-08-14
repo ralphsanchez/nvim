@@ -1,9 +1,11 @@
-# nvim
-My neovim config
+# My Neovim Config
 
-Clone to `%LOCALAPPDATA%\nvim` on Windows or ~/.config/nvim in Unix.
+- Windows `%LOCALAPPDATA%\nvim` 
+- Linux `~/.config/nvim`
+- Flatpak `~/.var/app/io.neovim.nvim/config/nvim'
 
-My preferred front-ends:
+Place local settings in file in the nvim/plugin folder like local.vim.
 
-- https://github.com/goneovim `scoop install goneovim`
+# Front-Ends
+- https://github.com/goneovim
 - neovide

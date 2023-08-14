@@ -12,23 +12,6 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.wildmode = 'longest:full'
 
--- Cycle through my preferred colors
-local colors = { 'catppuccin', 'colibri', 'nord', 'iceberg', 'aurora' }
-color_index = #colors
-vim.keymap.set('', '<C-F11>', 
-  function()
-    color_index = color_index + 1
-    if color_index > #colors then color_index = 1 end
-    vim.cmd('colorscheme ' .. colors[color_index])
-    vim.cmd('echo g:colors_name')
-  end)
-
--- Fonts and Colors
-if vim.fn.has('gui_running') then
-  vim.cmd([[colorscheme colibri | set guifont=Consolas:h12]])
-else
-end
-
 vim.api.nvim_create_autocmd(
   {'FileType'}, {
     pattern = 'vim,lua',
@@ -40,12 +23,11 @@ vim.api.nvim_create_autocmd(
     end
   })
 
--- https://neovide.dev/ 
--- scoop install neovide
+-- https://neovide.dev/ `scoop install neovide`
 if vim.g.neovide then
 	vim.g.neovide_remember_window_size = true
-  vim.g.neovide_floating_blur_amount_x = 1.0
-  vim.g.neovide_floating_blur_amount_y = 1.0
+  vim.g.neovide_floating_blur_amount_x = 2.0
+  vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_hide_mouse_when_typing = false
   vim.g.neovide_padding_bottom = 0
   vim.g.neovide_padding_left = 0
@@ -56,9 +38,9 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.3
   vim.g.neovide_transparency = 1.0 -- 1.0 == solid, 0.0 == no background
 
-  vim.g.neovide_cursor_animate_command_line = false
-  vim.g.neovide_cursor_animate_in_insert_mode = false
-  vim.g.neovide_cursor_animation_length = 0.1
+  vim.g.neovide_cursor_animate_command_line = true
+  vim.g.neovide_cursor_animate_in_insert_mode = true
+  vim.g.neovide_cursor_animation_length = 0.13
   vim.g.neovide_cursor_trail_size = 0.8
   vim.g.neovide_cursor_unfocused_outline_width = 0.125
   vim.g.neovide_cursor_vfx_mode = '' -- railgun, torpedo, pixiedust, sonicboom, ripple, wireframe
@@ -72,6 +54,33 @@ if vim.g.neovide then
   vim.keymap.set('', '<F11>', function() vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen end)
 end
 
+-- https://github.com/hismailbulut/Neoray
+if vim.g.neoray then
+	vim.cmd([[
+	set guifont=Go_Mono:h11
+	NeoraySet CursorAnimTime 0.08
+	NeoraySet Transparency   0.95
+	NeoraySet TargetTPS      120
+	NeoraySet BoxDrawing     true
+	NeoraySet ImageViewer    true
+	NeoraySet WindowSize     100x40
+	NeoraySet WindowState    centered
+	NeoraySet KeyFullscreen  <M-C-CR>
+	NeoraySet KeyZoomIn      <C-ScrollWheelUp>
+	NeoraySet KeyZoomOut     <C-ScrollWheelDown>
+
+	NeoraySet ContextMenu true
+	]])
+end
+
+-- https://github.com/yatli/fvim
+if vim.g.fvim_loaded then
+	vim.cmd([[
+	FVimCursorSmoothMove v:true
+	FVimCursorSmoothBlink v:true
+	]])
+end
+
 local packs = {
   -- plugins
   'BurntSushi/ripgrep',
@@ -81,7 +90,6 @@ local packs = {
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
   'stevearc/dressing.nvim',
-  'subnut/nvim-ghost.nvim',
   { 
     'tomasky/bookmarks.nvim', 
     run = function()
