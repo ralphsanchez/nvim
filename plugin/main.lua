@@ -1,9 +1,3 @@
--- Neovim https://neovim.io/
--- Local config goes in:
--- Windows: "~/AppData/Local/nvim/plugin/local.vim"
--- Unix: "~/.config/nvim/plugin/local.vim"
-
--- https://neovim.io/doc/user/options.html#option-summary
 vim.opt.browsedir = 'buffer'
 vim.opt.cursorline = false
 vim.opt.splitbelow = true
