@@ -26,15 +26,19 @@ return require('packer').startup(function(use)
   use 'NLKNguyen/papercolor-theme'
   use 'ajgrf/parchment'
   use 'archseer/colibri.vim'
-  use 'arcticicestudio/nord-vim'
+  use 'axvr/raider.vim'
+  use 'echasnovski/mini.base16'
   use 'cocopon/iceberg.vim'
+  use 'drazil100/dusklight.vim'
   use 'folke/tokyonight.nvim'
   use 'jaredgorski/fogbell.vim'
   use 'josebalius/vim-light-chromeclipse'
   use 'lmburns/kimbox'
+  use 'kvrohit/mellow.nvim'
   use 'morhetz/gruvbox'
   use 'nelstrom/vim-mac-classic-theme'
   use 'ntbbloodbath/sweetie.nvim'
+  use 'olivercederborg/poimandres.nvim'
   use 'olivertaylor/vacme'
   use 'ok-ryoko/blue-screen'
   use 'oxfist/night-owl.nvim'
@@ -46,11 +50,14 @@ return require('packer').startup(function(use)
   use 'sainnhe/everforest'
   use 'savq/melange-nvim'
   use 'sts10/vim-pink-moon'
+  use 'Verf/deepwhite.nvim'
   use 'wadackel/vim-dogrun'
-  use { 'Mofiqul/dracula.nvim', as = 'dracula' }
-  use { 'catppuccin/nvim', as = 'catppuccin' }
-  use { 'challenger-deep-theme/vim', as = 'challenger-deep-theme' }
-  use { 'embark-theme/vim', as = 'embark-theme' }
+  use {'Mofiqul/dracula.nvim', as = 'dracula'}
+  use {'nordtheme/vim', as = 'nord-vim'}
+  use {'catppuccin/nvim', as = 'catppuccin'}
+  use {'challenger-deep-theme/vim', as = 'challenger-deep-theme'}
+  use {'embark-theme/vim', as = 'embark-theme'}
+  use {'rose-pine/neovim', as = 'rose-pine'}
 
   if packer_bootstrap then
     require('packer').sync()
