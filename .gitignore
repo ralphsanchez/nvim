@@ -3,3 +3,4 @@ ginit.vim
 init.lua
 ginit.lua
 plugin/packer_compiled.lua
+init.vim
