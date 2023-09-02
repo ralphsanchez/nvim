@@ -1,4 +1,4 @@
-if false then -- enable/disable packer
+if true then -- enable/disable packer
   return
 end
 
