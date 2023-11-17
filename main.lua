@@ -54,6 +54,7 @@ local packs = {
   { 'lmburns/kimbox' },
   { 'kvrohit/mellow.nvim' },
   { 'morhetz/gruvbox' },
+  { 'oxfist/night-owl.nvim' },
   { 'nelstrom/vim-mac-classic-theme' },
   { 'ntbbloodbath/sweetie.nvim' },
   { 'olivercederborg/poimandres.nvim' },
