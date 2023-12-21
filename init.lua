@@ -1,4 +1,15 @@
--- Neovim Main Config
+-- Neovim Roaming Config
+-- https://neovim.io/doc/user/
+-- Using Roblox Lua Style Guide https://roblox.github.io/lua-style-guide
+
+-- Windows: scoop install neovim fvim
+-- Flatpak: https://flathub.org/apps/io.neovim.nvim `flatpak install flathub io.neovim.nvim`
+
+-- Windows: %LOCALAPPDATA%\nvim
+-- Linux: ~/.config/nvim
+-- Flatpak: ~/.var/app/io.neovim.nvim/config/nvim 
+
+-- Options
 
 vim.opt.browsedir = "buffer"
 vim.opt.cursorline = false
@@ -7,37 +18,30 @@ vim.opt.splitright = true
 vim.opt.wildmode = "longest:full"
 
 vim.api.nvim_create_autocmd(
-  {"FileType"}, {
-    pattern = "vim,lua",
-    callback = function(ev)
-      vim.opt.expandtab = true
-      vim.opt.keywordprg = ":help"
-      vim.opt.shiftwidth = 2
-      vim.opt.tabstop = 2
-    end
-  })
+{"FileType"}, {
+  pattern = "vim,lua",
+  callback = function(ev)
+    vim.opt.expandtab = true
+    vim.opt.keywordprg = ":help"
+    vim.opt.shiftwidth = 2
+    vim.opt.tabstop = 2
+  end
+})
 
 -- Mappings
 
 vim.g.mapleader = " " -- leader key
 
--- Lazy Packs Config
--- https://github.com/folke/lazy.nvim#-plugin-spec
+-- Plugins https://dotfyle.com/neovim/plugins/trending
+-- Lazy Packs Config https://github.com/folke/lazy.nvim#-plugin-spec
 
 local packs = {
   -- Plugins
-  {
-    "sontungexpt/url-open",
-    event = "VeryLazy",
-    cmd = "URLOpenUnderCursor",
-    config = function()
-      local status_ok, url_open = pcall(require, "url-open")
-      if not status_ok then
-        return
-      end
-      url_open.setup({})
-    end,
-  },
+  { 'echasnovski/mini.nvim', version = '*' },
+  { 'epwalsh/obsidian.nvim', version = '*', lazy = true, ft = 'markdown', dependencies = 'nvim-lua/plenary.nvim' },
+  { 'gbprod/yanky.nvim' },
+  { 'ggandor/leap.nvim' }, 
+  { 'nvim-telescope/telescope.nvim' },
   { 'tpope/vim-unimpaired' },
 
   -- Colorschemes https://vimcolorschemes.com/
@@ -53,6 +57,7 @@ local packs = {
   { 'josebalius/vim-light-chromeclipse' },
   { 'lmburns/kimbox' },
   { 'kvrohit/mellow.nvim' },
+  { 'mcchrish/zenbones.nvim' },
   { 'morhetz/gruvbox' },
   { 'oxfist/night-owl.nvim' },
   { 'nelstrom/vim-mac-classic-theme' },
@@ -73,11 +78,11 @@ local packs = {
   { 'wadackel/vim-dogrun' },
   { 'nordtheme/vim', name = 'nord_theme'},
   { 'challenger-deep-theme/vim', name = 'challenger_deep_theme'},
-  { "Verf/deepwhite.nvim", name = "deepwhite_theme" },
-  { "catppuccin/nvim", name = "catppuccin_theme" },
-  { "dracula/vim", name = "dracula_theme" },
-  { "embark-theme/vim", name = "embark_theme" },
-  { "rose-pine/neovim", name = "rosepine_theme" },
+  { 'Verf/deepwhite.nvim', name = 'deepwhite_theme' },
+  { 'catppuccin/nvim', name = 'catppuccin_theme' },
+  { 'dracula/vim', name = 'dracula_theme' },
+  { 'embark-theme/vim', name = 'embark_theme' },
+  { 'rose-pine/neovim', name = 'rosepine_theme' },
 }
 
 -- Lazy https://github.com/folke/lazy.nvim
@@ -98,7 +103,11 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup(packs, lazyopts)
+if not vim.g.lazy_did_setup then
+  vim.opt.rtp:prepend(lazypath)
+  require("lazy").setup(packs, lazyopts)
+end
 
+-- Finally
+vim.cmd.colorscheme("fogbell")
