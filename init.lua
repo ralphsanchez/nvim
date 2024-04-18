@@ -11,7 +11,6 @@
 
 -- Options
 
-vim.opt.browsedir = "buffer"
 vim.opt.cursorline = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
