@@ -71,6 +71,7 @@ local packs = {
   { 'rebelot/kanagawa.nvim' },
   { 'sainnhe/sonokai' },
   { 'sainnhe/everforest' },
+  { 'slugbyte/lackluster.nvim' },
   { 'savq/melange-nvim' },
   { 'sts10/vim-pink-moon' },
   { 'Verf/deepwhite.nvim' },
