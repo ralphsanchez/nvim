@@ -32,60 +32,10 @@ vim.api.nvim_create_autocmd(
 vim.g.mapleader = " " -- leader key
 
 -- Plugins https://dotfyle.com/neovim/plugins/trending
--- Lazy Packs Config https://github.com/folke/lazy.nvim#-plugin-spec
-
-local packs = {
-  -- Plugins
-  { 'echasnovski/mini.nvim', version = '*' },
-  { 'epwalsh/obsidian.nvim', version = '*', lazy = true, ft = 'markdown', dependencies = 'nvim-lua/plenary.nvim' },
-  { 'gbprod/yanky.nvim' },
-  { 'ggandor/leap.nvim' }, 
-  { 'nvim-telescope/telescope.nvim' },
-  { 'tpope/vim-unimpaired' },
-
-  -- Colorschemes https://vimcolorschemes.com/
-  { 'NLKNguyen/papercolor-theme' },
-  { 'ajgrf/parchment' },
-  { 'archseer/colibri.vim' },
-  { 'axvr/raider.vim' },
-  { 'echasnovski/mini.base16' },
-  { 'cocopon/iceberg.vim' },
-  { 'drazil100/dusklight.vim' },
-  { 'folke/tokyonight.nvim' },
-  { 'jaredgorski/fogbell.vim' },
-  { 'josebalius/vim-light-chromeclipse' },
-  { 'lmburns/kimbox' },
-  { 'kvrohit/mellow.nvim' },
-  { 'mcchrish/zenbones.nvim' },
-  { 'morhetz/gruvbox' },
-  { 'oxfist/night-owl.nvim' },
-  { 'nelstrom/vim-mac-classic-theme' },
-  { 'ntbbloodbath/sweetie.nvim' },
-  { 'olivercederborg/poimandres.nvim' },
-  { 'olivertaylor/vacme' },
-  { 'ok-ryoko/blue-screen' },
-  { 'oxfist/night-owl.nvim' },
-  { 'preservim/vim-colors-pencil' },
-  { 'progrimorio/nvim-nyctophilia' },
-  { 'ray-x/aurora' },
-  { 'rebelot/kanagawa.nvim' },
-  { 'sainnhe/sonokai' },
-  { 'sainnhe/everforest' },
-  { 'slugbyte/lackluster.nvim' },
-  { 'savq/melange-nvim' },
-  { 'sts10/vim-pink-moon' },
-  { 'Verf/deepwhite.nvim' },
-  { 'wadackel/vim-dogrun' },
-  { 'nordtheme/vim', name = 'nord_theme'},
-  { 'challenger-deep-theme/vim', name = 'challenger_deep_theme'},
-  { 'Verf/deepwhite.nvim', name = 'deepwhite_theme' },
-  { 'catppuccin/nvim', name = 'catppuccin_theme' },
-  { 'dracula/vim', name = 'dracula_theme' },
-  { 'embark-theme/vim', name = 'embark_theme' },
-  { 'rose-pine/neovim', name = 'rosepine_theme' },
-}
-
 -- Lazy https://github.com/folke/lazy.nvim
+-- Lazy Packs Config https://github.com/folke/lazy.nvim#-plugin-spec
+-- https://lazy.folke.io/
+-- Place plugins specs in nvim\lua\plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 local lazyopts = {}
 
@@ -106,7 +56,8 @@ end
 
 if not vim.g.lazy_did_setup then
   vim.opt.rtp:prepend(lazypath)
-  require("lazy").setup(packs, lazyopts)
+  --require("lazy").setup(packs, lazyopts)
+  require("lazy").setup("plugins", lazyopts)
 end
 
 --
