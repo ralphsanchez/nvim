@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Mappings
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = "  "
 
 -- Plugins https://dotfyle.com/neovim/plugins/trending https://github.com/folke/lazy.nvim#-plugin-spec
 
@@ -104,6 +104,7 @@ local themes = {
   { 'savq/melange-nvim' },
   { 'slugbyte/lackluster.nvim' },
   { 'sts10/vim-pink-moon' },
+  { 'yorik1984/newpaper.nvim' },
   { 'wadackel/vim-dogrun' },
 }
 
