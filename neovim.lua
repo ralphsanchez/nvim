@@ -27,6 +27,18 @@ local packs = {
   { 'epwalsh/obsidian.nvim', version = '*', lazy = true, ft = 'markdown', dependencies = 'nvim-lua/plenary.nvim' },
   { 'gbprod/yanky.nvim' },
   { 'ggandor/leap.nvim' },
+	{
+		'kdheepak/lazygit.nvim',
+		lazy = true,
+		cmd = {
+			'LazyGit',
+			'LazyGitConfig',
+			'LazyGitCurrentFile',
+			'LazyGitFilter',
+			'LazyGitFilterCurrentFile',
+		},
+		keys = {{ '<leader>lg', '<cmd>LazyGit<cr>', desc = 'LazyGit' }}
+	},
   {
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' }
@@ -37,16 +49,17 @@ local packs = {
     opts = {
       on_attach = function(bufnr)
         -- Jump forwards/backwards with '{' and '}'
-        vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
-        vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+        vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
+        vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
       end,
-      vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+      vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
     },
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons'
     }
   },
+  { 'stevearc/dressing.nvim' },
   { 'tpope/vim-unimpaired' },
   { 'nvim-tree/nvim-web-devicons' },
 }
