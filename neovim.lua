@@ -3,13 +3,22 @@
 vim.opt.cursorline = false
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.wildmode = "longest:full"
+vim.opt.wildmode = 'longest:full'
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "vim,lua",
+local vimrc_autocmds = vim.api.nvim_create_augroup('vimrc', { clear = true })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+	pattern = '*',
+	group = vimrc_autocmds,
+	command = 'silent! lua vim.highlight.on_yank { higroup="IncSearch", timeout=200 }'
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'vim,lua',
+	group = vimrc_autocmds,
   callback = function(ev)
     vim.opt.expandtab = true
-    vim.opt.keywordprg = ":help"
+    vim.opt.keywordprg = ':help'
     vim.opt.shiftwidth = 2
     vim.opt.tabstop = 2
   end
@@ -17,8 +26,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Mappings
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = "  "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '  '
 
 -- Plugins https://dotfyle.com/neovim/plugins/trending https://github.com/folke/lazy.nvim#-plugin-spec
 
@@ -109,15 +118,15 @@ local themes = {
 }
 
 -- Lazy https://lazy.folke.io/installation
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
+      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+      { out, 'WarningMsg' },
+      { '\nPress any key to exit...' },
     }, true, {})
     vim.fn.getchar()
     os.exit(1)
@@ -127,9 +136,9 @@ vim.opt.rtp:prepend(lazypath)
 
 if not vim.g.lazy_did_setup then
   -- https://lazy.folke.io/configuration
-  require("lazy").setup({
+  require('lazy').setup({
     spec = { packs, themes },
-    install = { colorscheme = { "habamax" } },
+    install = { colorscheme = { 'habamax' } },
     checker = { enabled = true },
   })
 end
